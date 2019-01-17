@@ -152,16 +152,20 @@ public class BaseGUI {
             System.out.print(dist + " ");
         }
         System.out.println();
+        if (output.size() != 0) {
 //        Demo demo = new Demo();
 //            demo.main(verNo, output.get(1),weightGraph);
-        Demo[] demo = new Demo[output.size()];
+            Demo[] demo = new Demo[output.size()];
 
-        for (Demo dem : demo) {
-            dem = new Demo();
-            dem.main(verNo, output, weightGraph, distanceArray);
+            for (Demo dem : demo) {
+                dem = new Demo();
+                dem.main(verNo, output, weightGraph, distanceArray);
 
+            }
+            System.out.println();
+        } else {
+            JOptionPane.showMessageDialog(null, "NO PATH FOUND! There is no solution! GO AWAY PLEASE!");
         }
-        System.out.println();
     }
 
 

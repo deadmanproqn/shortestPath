@@ -3,23 +3,23 @@ import java.util.Scanner;
 
 
 public class NhanHamilton {
-    ArrayList<Integer> mindist;
-    public int totaldistance;
-    public int subop[] = new int[1000];
-    public int optimall[] = new int[1000];
-    public int index;
-    public boolean free[];
-    public static double times[];
-    public int hamil[];
-    public int prior[];
-    public int trace[] = new int[1000];
-    public static int n;
-    public static int pri;
-    public static int[][] graph;
-    ArrayList<int[]> outputArray = new ArrayList<>();
-    ArrayList<Integer> distanceArray = new ArrayList<>();
-    public int[] path;
-    public int stNode;
+    private ArrayList<Integer> mindist;
+    private int totaldistance;
+    private int subop[] = new int[1000];
+    private int optimall[] = new int[1000];
+    private int index;
+    private boolean free[];
+    private static double times[];
+    private int hamil[];
+    private int prior[];
+    private int trace[] = new int[1000];
+    private static int n;
+    private static int pri;
+    private static int[][] graph;
+    private ArrayList<int[]> outputArray = new ArrayList<>();
+    private ArrayList<Integer> distanceArray = new ArrayList<>();
+    private int[] path;
+    private int stNode;
 
     public void PrintResult() {
         System.out.print("\nPath : ");
@@ -167,7 +167,7 @@ public class NhanHamilton {
 //        }
 //    }
 
-    public void attempt(int i) {
+    private void attempt(int i) {
         //Using Halminton
         int j;
         boolean check = false;
@@ -365,7 +365,7 @@ public class NhanHamilton {
         }
     }
 
-    public void optimization(int fp, int lp) {
+    private void optimization(int fp, int lp) {
         //Using Ford-Bellman algorithm
         int size = n;
         int length[] = new int[n];
@@ -448,7 +448,7 @@ public class NhanHamilton {
         scan.close();
     }
 
-    public ArrayList<int[]> main(int vertices, Double[] times, int[][] graph, int speed, int stNode) {
+    ArrayList<int[]> main(int vertices, Double[] times, int[][] graph, int speed, int stNode) {
         this.stNode = stNode;
         n = vertices;
         pri = times.length;
@@ -460,7 +460,8 @@ public class NhanHamilton {
         setup();
         attempt2(1);
         int min = Integer.MAX_VALUE / 2;
-        int i, minid = vertices;
+        int i;
+        int minid = 0;
         for (i = 0; i < distanceArray.size(); i++) {
             if (distanceArray.get(i) < min) {
                 min = distanceArray.get(i);
@@ -469,12 +470,15 @@ public class NhanHamilton {
         }
         mindist = new ArrayList<>();
         ArrayList<int[]> newpath = new ArrayList<>();
-        newpath.add(outputArray.get(minid));
-        mindist.add(distanceArray.get(minid));
+        if (outputArray.size() != 0) {
+            newpath.add(outputArray.get(minid));
+            mindist.add(distanceArray.get(minid));
+        }
+
         return newpath;
     }
 
-    public ArrayList<Integer> getDistanceArray() {
+    ArrayList<Integer> getDistanceArray() {
 
         return mindist;
     }
