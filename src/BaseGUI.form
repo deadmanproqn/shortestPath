@@ -53,7 +53,7 @@
       <component id="96236" class="javax.swing.JTextArea" binding="graphWeightMap">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="500" height="500"/>
+            <preferred-size width="300" height="100"/>
           </grid>
         </constraints>
         <properties>

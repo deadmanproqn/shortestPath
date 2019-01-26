@@ -61,10 +61,15 @@ public class BaseGUI {
 
 
     public void actionPerformed(ActionEvent e) {
-        int verNo, priNo, Tspeed, stNode;
-        int[][] weightGraph;
+        int verNo, /* Vertices number */
+                priNo, /* Priority number */
+                Tspeed,/* Speed */
+                stNode;/* Start Node */
+        int[][] weightGraph;//Weight graph
+        Double[] pList; // priority list
+
         boolean priVal = true;
-        Double[] pList;
+
         String[] tmp;
         disableField(false);
         //Get No of vertices, priority node, speed and start node
@@ -146,7 +151,7 @@ public class BaseGUI {
             distanceArray = notime.getDistance();
         }
         long end = System.nanoTime();
-        System.out.print("Execution time is " + (end - start) + " nanoseconds");
+        System.out.print("Execution time is " + (end - start) + " nanoseconds\n");
         System.out.print("Distance array:");
         for (int dist : distanceArray) {
             System.out.print(dist + " ");

@@ -21,33 +21,7 @@ public class NhanHamilton {
     private int[] path;
     private int stNode;
 
-    public void PrintResult() {
-        System.out.print("\nPath : ");
-        int V = hamil.length;
-        int vv = prior.length;
-        //path=new int[V+vv-1];
 
-        int distance = 0;
-        for (int i = 0; i < vv; i++) {
-            System.out.print(prior[i] + " ");
-            path[i] = prior[i];
-        }
-        for (int i = 1; i < V; i++) {
-            System.out.print(hamil[i] + " ");
-            path[prior.length + i - 1] = hamil[i];
-        }
-
-        for (int i = 1; i < V; i++) {
-            distance = distance + graph[hamil[i - 1]][hamil[i]];
-        }
-        for (int i = 1; i < vv; i++) {
-            distance = distance + graph[prior[i - 1]][prior[i]];
-        }
-
-        System.out.print("Distance = " + distance);
-        //outputArray.add(path);
-        System.out.println();
-    }
 
     public void setup() {
         free = new boolean[n];
@@ -83,89 +57,6 @@ public class NhanHamilton {
         }
         return time1;
     }
-//    public void attempt(int i) {
-//        //Using Halminton
-//        int j;
-//        for (j=pri-1;j<n;j++) {
-//            if ((free[j]) && (graph[hamil[i-1]][j]>0)) {
-//                hamil[i] = j;
-//                if (i<n-pri) {
-//                    free[j] = false;
-//                    attempt(i+1);
-//                    free[j] = true;
-//                }
-//                else if (i==n-pri) {
-//                    if (graph[j][hamil[0]] > 0) {
-//                        System.out.print("\nPath : ");
-//                        int V = hamil.length;
-//                        int vv = prior.length;
-//                        path= new int[V + vv - 1];
-//                        totaldistance = 0;
-//
-//                        int distance = 0;
-//                        for (int ii = 0; ii < vv; ii++) {
-//                            System.out.print(prior[ii] +" ");
-//                            path[ii]=prior[ii];
-//                        }
-//                        for (int ii = 1; ii < V; ii++) {
-//                            System.out.print(hamil[ii] +" ");
-//                            path[prior.length+ii-1]=hamil[ii];
-//                        }
-//
-//                        for (int ii = 1; ii < V; ii++) {
-//                            distance = distance + graph[hamil[ii-1]][hamil[ii]];
-//                        }
-//                        for (int ii = 1; ii < vv; ii++) {
-//                            distance = distance + graph[prior[ii-1]][prior[ii]];
-//                        }
-//                        System.out.print("Distance = "+ distance);
-//                        distanceArray.add(distance);
-//                        System.out.println();
-//
-//                        for (int ii=0;ii<1000;ii++) {
-//                            optimall[ii] = 0;
-//                            subop[ii] =0;
-//                        }
-//                        index =1;
-//                        subop[0] =0;
-//                        for (int ii = 1; ii < vv; ii++) {
-//                            optimization(prior[ii-1],prior[ii]);
-//                        }
-//                        for (int ii = 1; ii < V; ii++) {
-//                            optimization(hamil[ii-1],hamil[ii]);
-//                        }
-//				        /*for (int ii =0;ii<index;ii++) {
-//				        	optimall[ii] = subop[index -ii-1];
-//				        }*/
-//                        if (totaldistance < distance) {
-//                            ArrayList<Integer>optpath = new ArrayList<>();
-//                            System.out.print("Optimization : ");
-//                            for (int ii=0;ii<index;ii++) {
-//                                System.out.print(" " + subop[ii] );
-//                                optpath.add(subop[ii]);
-//                            }
-//                            System.out.println(" Distance = " + totaldistance);
-//
-//                            path = new int[optpath.toArray().length];
-//                            for(int ind=0;ind<path.length;ind++){
-//                                //int val= (Integer)
-//                                path[ind]= optpath.get(ind);
-//                            }
-//                            int[] cPath;
-//                            cPath =changeStart(path);
-//                            outputArray.add(cPath);
-//                        } else {
-//                            System.out.println("Already the shortest possible path of this path");
-//                            int[] cPath;
-//                            cPath =changeStart(path);
-//                            outputArray.add(changeStart(cPath));
-//                        }
-//                    }
-//
-//                }
-//            }
-//        }
-//    }
 
     private void attempt(int i) {
         //Using Halminton
@@ -189,11 +80,11 @@ public class NhanHamilton {
 
                         int distance = 0;
                         for (int ii = 0; ii < vv; ii++) {
-                            System.out.print(prior[ii] + " ");
+                            System.out.print(changeNode(prior[ii]) + " ");
                             path[ii] = prior[ii];
                         }
                         for (int ii = 1; ii < V; ii++) {
-                            System.out.print(hamil[ii] + " ");
+                            System.out.print(changeNode(hamil[ii]) + " ");
                             path[prior.length + ii - 1] = hamil[ii];
                         }
 
@@ -226,7 +117,7 @@ public class NhanHamilton {
                             ArrayList<Integer> optpath = new ArrayList<>();
                             System.out.print("Optimization : ");
                             for (int ii = 0; ii < index; ii++) {
-                                System.out.print(" " + subop[ii]);
+                                System.out.print(" " + changeNode(subop[ii]));
                                 optpath.add(subop[ii]);
                             }
                             path = new int[optpath.toArray().length];
@@ -259,11 +150,11 @@ public class NhanHamilton {
 
             int distance = 0;
             for (int ii = 0; ii < vv; ii++) {
-                System.out.print(prior[ii] + " ");
+                System.out.print(changeNode(prior[ii]) + " ");
                 path[ii] = prior[ii];
             }
             for (int ii = 1; ii < V; ii++) {
-                System.out.print(hamil[ii] + " ");
+                System.out.print(changeNode(hamil[ii]) + " ");
                 path[prior.length + ii - 1] = hamil[ii];
             }
 
@@ -296,7 +187,7 @@ public class NhanHamilton {
                 ArrayList<Integer> optpath = new ArrayList<>();
                 System.out.print("Optimization : ");
                 for (int ii = 0; ii < index; ii++) {
-                    System.out.print(" " + subop[ii]);
+                    System.out.print(" " + changeNode(subop[ii]));
                     optpath.add(subop[ii]);
                 }
                 path = new int[optpath.toArray().length];
@@ -331,6 +222,19 @@ public class NhanHamilton {
             }
         }
         return path;
+    }
+
+    private int changeNode(int node) {
+        if (stNode == 0) {
+            return node;
+        }
+        if (node == 0) {
+            return stNode;
+        }
+        if (node == stNode) {
+            return 0;
+        }
+        return node;
     }
 
     public void attempt2(int i) {

@@ -103,7 +103,7 @@ public class Demo extends PApplet {
         }
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (i != j) {
+                if (i != j && graph[i][j] != -1) {// -1 mean no edge between 2 node
                     g.linkNodes(nod[i], nod[j]);
                 }
             }

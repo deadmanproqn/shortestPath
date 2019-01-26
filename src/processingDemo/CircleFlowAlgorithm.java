@@ -13,9 +13,7 @@ import static java.lang.Math.PI;
  * Flow algorithm for drawing nodes in a circle
  */
 class CircleFlowAlgorithm extends PApplet implements FlowAlgorithm {
-    // draw all nodes in a big circle,
-    // without trying to find the best
-    // arrangement possible.
+    // draw all nodes in a big circle
     PApplet parent;
 
     CircleFlowAlgorithm(PApplet p) {
