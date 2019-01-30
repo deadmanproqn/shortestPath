@@ -42,10 +42,7 @@ public class MatrixChange {
         int s1 = stNode;
         graph = graph1;
         if ((s1 < n) && (s1 >= 0)) {
-//            while (s1 > 0) {
-//                matrix.Swapnodes(s1, s1 -1);
-//                s1 = s1-1;
-//            }
+
             matrix.Swapnodes(s1, 0);
         } else {
             System.out.println("Wrong nodes you got there");
@@ -60,25 +57,7 @@ public class MatrixChange {
         return graph;
     }
 
-    //    public int[][] main(int[][] oGraph, int stNode,int V) {
-//        this.graph = new int[V][V];
-//        for (int i = 0; i < V; i++)
-//            for (int j = 0; j < V; j++)
-//                graph[i][j] = oGraph[i][j];
-//
-//        int node=stNode;
-//        while (node > 0) {
-//            this.Swapnodes(node, node-1);
-//            node = node-1;
-//        }
-//        for (int i=0 ; i<V;i++) {
-//            for (int j=0;j<V;j++) {
-//                System.out.print(graph[i][j]+ " ");
-//            }
-//            System.out.println();
-//        }
-//        return graph;
-//    }
+
     public static void reset() {
         graph = null;
     }
